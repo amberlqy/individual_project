@@ -1,0 +1,507 @@
+%\newcommand{\labelx}[1]{\label{#1}($#1$)}
+\newcommand{\labelx}[1]{\label{#1}}
+\newcommand{\ruler}[1]{\hbox{[#1]}}
+\newcommand{\rulename}[1]{[\textsc{\small #1}]}
+\newcommand{\xlbranch}[3]{\ensuremath{#1 {\&} ({#2}, {#3})}}
+\newcommand{\xlsel}[3]{\xlselp{#1}{#2}{#3}.}
+\newcommand{\xlselp}[3]{\ensuremath{#1 {\oplus} \anglep{#2}{#3}}}
+%SINTASSI
+\newcommand{\upd}{\mathit{update}}
+\newcommand{\pn}{\p}
+\newcommand{\rtsyntax}[1]{%
+        \adjustbox{bgcolor=lightgray,bgcolor=lightgray}{\strut\ensuremath{\,#1\,}}%
+}
+%\newcommand{\rtsyntax}[1]{\colorbox{lightgray}{\ensuremath{#1}}}
+\newcommand{\ptilde}[1]{{\ensuremath{#1}}}
+%\newcommand{\kf}[1]{\textsf{\upshape\small #1}\xspace}
+\newcommand{\kf}[1]{\textup{\textsf{#1}}\xspace}
+\newcommand{\constf}[1]{\textup{\textsf{#1}}}
+\newcommand{\srsimple}[3]{\ensuremath{\bar{#1}[#2](#3)}}
+\newcommand{\sr}[4]{\ensuremath{\srsimple{#1}{#2}{#3}.#4}}
+\newcommand{\uu}{\ensuremath{u}}
+\newcommand{\Ia}{\ensuremath{a}}
+\newcommand{\Ic}{\ensuremath{c}}
+\newcommand{\Ias}{\ensuremath{\alpha}}
+\newcommand{\Ib}{\ensuremath{b}}
+\newcommand{\y}{\ensuremath{y}}
+\newcommand{\PP}{\ensuremath{P}}
+\newcommand{\Q}{\ensuremath{Q}}
+\newcommand{\R}{\ensuremath{R}}
+\newcommand{\DD}{\ensuremath{D}}
+\newcommand{\sasimple}[3]{\ensuremath{#1[#2](#3)}}
+\newcommand{\sa}[4]{\ensuremath{\sasimple{#1}{#2}{#3}.#4}}
+\newcommand{\pp}{\ensuremath{\at{\p}}}
+\newcommand{\si}[2]{\ensuremath{#1[#2]}}
+\newcommand{\sI}[1]{\ensuremath{\s_{#1}}}
+%\newcommand{\sI}[1]{\ensuremath{\s^#1}}   vecchia versione
+\newcommand{\sii}{\si{\s}{\p}}
+\newcommand{\sij}{\si{\s}{\p_j}}
+\newcommand{\siq}{\si{\s}{\q}}
+\newcommand{\siip}{\si{\s'}{\p'}}
+\newcommand{\sipp}{\si{\s'}{\p}}
+\newcommand{\cc}{\ensuremath{c}}
+\newcommand{\pset}{\ensuremath{\Pi}}
+\newcommand{\inpset}[2][\Pi]{\ensuremath{\p_#2 \in #1}}
+\newcommand{\kinpset}{\inpset{k}}
+%\newcommand{\pset}{\ensuremath{\set{\participant{\p}_k}_{k\in K}}}
+\newcommand{\out}[4]{\ensuremath{#1!\langle #2,#3\rangle.#4}}   %--M
+%\newcommand{\out}[4]{\ensuremath{#1!\langle \set{#3_k}_{k\in K},#2\rangle;#4}}
+%\newcommand{\outp}[3]{\ensuremath{#1!\langle \pset,#2\rangle}}  ---M
+\newcommand{\outp}[3]{\ensuremath{#1!\langle \p,#2\rangle}}    %--M
+\newcommand{\outs}[4]{\ensuremath{#1!\langle #3,#2\rangle.#4}}
+\newcommand{\e}{\ensuremath{e}}
+\newcommand{\inp}[4]{\ensuremath{#1?( #3,#2).#4}}
+\newcommand{\inpp}[3]{\ensuremath{#1?( #3,#2)}}
+\newcommand{\inps}[4]{\ensuremath{#1?( #3,#2).#4}}
+\newcommand{\x}{\ensuremath{x}}
+\newcommand{\participant}[1]{\ensuremath{\mathtt{#1}}}
+\newcommand{\q}{\ensuremath{\participant{q}}}
+\newcommand{\p}{\ensuremath{\participant{p}}}
+\newcommand{\sd}[4]{\ensuremath{#1!\langle\! \langle#3,#2\rangle \!\rangle.#4}}
+\newcommand{\sdsp}[3]{\ensuremath{#1!\langle\! \langle#3,#2\rangle \!\rangle}}
+\newcommand{\sdt}[4]{\ensuremath{#1^\top!\langle\! \langle#3,#2\rangle \!\rangle.#4}}
+\newcommand{\sdp}[3]{\ensuremath{#1!\langle\! \langle#3,#2\rangle \!\rangle}}
+\newcommand{\rdp}[3]{\ensuremath{#1?(\!(#3,#2)\!)}}
+%\newcommand{\sdp}[4]{\ensuremath{#1!^{\lev'}\langle\! \langle#3,#2\rangle \!\rangle.#4}}
+\newcommand{\rd}[4]{\ensuremath{#1?(\!(#3,#2)\!).#4}}
+\newcommand{\rdt}[4]{\ensuremath{#1^\top?(\!(#3,#2)\!).#4}}
+\newcommand{\z}{\ensuremath{z}}
+\newcommand{\pc}{\Par}
+\newcommand{\s}{\ensuremath{s}}
+\newcommand{\X}{\ensuremath{X}}
+\newcommand{\defX}{\ensuremath{\kf{def} \ \Ddef\ \kf{in}\ }}
+\newcommand{\Xsignature}{\ensuremath{\X(\x, \y)}}
+\newcommand{\Xsignaturep}{\ensuremath{\X(\x, \y')}}
+\newcommand{\Ddef}{\ensuremath{\Xsignature=\PP}}
+\newcommand{\Ddefp}{\ensuremath{\Xsignature=\PP'}}
+\newcommand{\DdefpO}{\ensuremath{\Xsignature=\PP_0}}
+\newcommand{\Ddefpp}{\ensuremath{\Xsignature=\R}}
+\newcommand{\defIn}[1]{\ensuremath{\kf{def} \ #1 \ \kf{in}\ }}
+\newcommand{\defD}{\ensuremath{\kf{def}\ \DD \ \kf{in}\ }}
+\newcommand{\DdefD}{\ensuremath{\kf{def}\ \Ddef \ \kf{in}\ }}
+\newcommand{\defDp}{\ensuremath{\kf{def}\ \DD' \ \kf{in}\ }}
+\newcommand{\proccall}[3]{\ensuremath{#1\langle\ptilde{#2},\ptilde{#3}\rangle}}
+\newcommand{\proccallw}[3]{\ensuremath{#1\langle\ptilde{#2},\ptilde{#3}\rangle}}
+\newcommand{\proccalldots}[3]{\ensuremath{#1\langle\ptilde{#2},\ptilde{#3}\rangle}}
+
+\newcommand{\indexed}[4]{\ensuremath{\{#1_#3 : #2_#3\}_{#3 \in #4}}}
+
+\newcommand{\values}{\ensuremath{\at{v}}}
+\newcommand{\trival}[3]{\ensuremath{(#3,#2, #1)}}
+\newcommand{\labval}[2]{\ensuremath{(#1, #2)}}
+\newcommand{\anglep}[2]{\ensuremath{\langle #1, #2\rangle}}
+\newcommand{\valheap}[3]{\ensuremath{( #3,#2,#1 )}}    %--M
+\newcommand{\valheaps}[3]{\ensuremath{( #3,#2,#1 )}}
+\newcommand{\valheapj}[2]{\ensuremath{( #2,\{j\},#1 )}}
+%\newcommand{\valheapp}[2]{\ensuremath{( #2,\{\p\},#1 )}}
+\newcommand{\valheapp}[2]{\ensuremath{( #2,\p,#1 )}}
+\newcommand{\valheapLess}[3]{\ensuremath{( #3,\pset\setminus \p,#1 )}}
+\newcommand{\delheap}[3]{\ensuremath{(#3,{#2},#1 )}}
+\newcommand{\labheap}[3]{\ensuremath{( #3,#2,#1 )}}    %--M
+\newcommand{\labheaps}[3]{\ensuremath{( #3,#2,#1 )}}
+\newcommand{\labheapj}[2]{\ensuremath{( #2,\{j\},#1 )}}
+%\newcommand{\labheapp}[2]{\ensuremath{( #2,\{\p\},#1 )}}
+\newcommand{\labheapp}[2]{\ensuremath{( #2,\p,#1 )}}
+\newcommand{\lsel}[4]{\ensuremath{#1 \oplus \anglep{#2}{#3}.#4}}   %--M
+\newcommand{\sel}[4]{\ensuremath{#1 \oplus \anglep{#3}{#2}.#4}}
+\newcommand{\lbranch}[2]{\ensuremath{#1 \&
+({#2},\indexed{l}{\PP}{i}{I})}}
+\newcommand{\lbranchR}[2]{\ensuremath{#1 \&
+({#2},\indexed{l}{\R}{i}{I})}}
+\newcommand{\lbranchi}[2]{\ensuremath{#1 \&
+({#2},\indexed{l}{\PP}{i}{I})}}
+
+%\newcommand{\ifthenelse}[3]{\ensuremath{\kf{if}\ #1\ \kf{then}\ #2\ \kf{else}\ #3}}
+\newcommand{\inact}{\ensuremath{\mathbf{0}}}
+\newcommand{\nuc}[2]{\ensuremath{(\nu #1)#2}}
+\newcommand{\AND}[2]{\ensuremath{#1\ \kf{and}\ #2}}
+\newcommand{\NOT}[1]{\ensuremath{\kf{not}\ #1}}
+\newcommand{\true}{\kf{true}}
+\newcommand{\false}{\kf{false}}
+\newcommand{\h}{\ensuremath{h}}
+\newcommand{\mg}{\ensuremath{m}}
+\newcommand{\va}{\ensuremath{v}}
+\newcommand{\at}[1]{\ensuremath{\ptilde{#1}}}
+\newcommand{\atw}[1]{\ensuremath{\ptilde{#1}}}
+\newcommand{\Co}[1]{\ensuremath{C[#1]}}
+\newcommand{\Par}{\ensuremath{\ |\ }}
+\newcommand{\cas}{\ensuremath{r}}
+\newcommand{\eq}{\ensuremath{\diameter}}
+
+%SEMANTICA
+\newcommand{\redsym}{\ensuremath{\longrightarrow}}
+\newcommand{\red}[2]{\ensuremath{#1\redsym#2}}
+\newcommand{\redM}[2]{\ensuremath{#1\redsym^*#2}}
+\newcommand{\redN}[2]{\ensuremath{#1\redsym^n#2}}
+\newcommand{\redK}[2]{\ensuremath{#1\redsym^k#2}}
+\newcommand{\redP}[2]{\ensuremath{#1\redsym^+#2}}
+\newcommand{\set}[1]{\ensuremath{\{#1\}}}
+\newcommand{\mset}[1]{\ensuremath{\{\!\!\{#1\}\!\!\}}}
+\newcommand{\sub}[2]{\ensuremath{\{#1/#2\}}}
+\newcommand{\ssub}[2]{\ensuremath{\{#1/#2\}}}
+\newcommand{\subO}[2]{\ensuremath{\set{\!\{#1/#2\}\!}}}
+
+\newcommand{\sep}{\ensuremath{~\mathbf{|\!\!|}~ }}
+
+\newcommand{\Implies}{\ensuremath{\quad \Rightarrow \quad }}
+
+\newcommand{\mqueue}[2]{\ensuremath{#1 : #2}}
+\newcommand{\emptyqueue}[1]{\mqueue{\s}{\emptyset}}
+\newcommand{\queue}{\ensuremath{\h}}
+\newcommand{\stdqueue}{\mqueue{\s}{\queue}}
+\newcommand{\qcomp}[2]{\ensuremath{#1 \cdot #2}}
+\newcommand{\qtail}[1]{\ensuremath{\qcomp{\queue}{#1}}}
+\newcommand{\qhead}[1]{\ensuremath{\qcomp{#1}{\queue}}}
+\newcommand{\qm}[1]{\ensuremath{\qcomp{\queue_1}{\qcomp{#1}{\queue_2}}}}
+
+\newcommand{\qappend}[1]{\mqueue{\s}{\qtail{#1}}}
+\newcommand{\qpop}[1]{\mqueue{\s}{\qhead{#1}}}
+
+\newcommand{\subst}[2]{\ensuremath{\{#1 / #2\}}}
+\newcommand{\remove}[2]{\ensuremath{#1 \backslash \{#2\}}}
+
+\newcommand{\freen}[1]{\ensuremath{\text{fn}(#1)}}
+\newcommand{\dpv}[1]{\ensuremath{\text{dpv}(#1)}}
+\newcommand{\fpv}[1]{\ensuremath{\text{fpv}(#1)}}
+\newcommand{\rrule}[1]{[\text{#1}]}
+
+%TIPI
+\newcommand{\G}{\ensuremath{G}}
+\newcommand{\Gv}[4]{\ensuremath{#1\to #2:\langle#3\rangle.#4}}  %--M
+\newcommand{\Gvr}[4]{\ensuremath{#1\to#2:\langle#3\rangle.#4}}
+\newcommand{\U}{\ensuremath{U}}
+\newcommand{\sid}[1]{\ensuremath{\textup{mp}(#1)}}
+\newcommand{\pro}[2]{\ensuremath{#1\upharpoonright#2}}
+\newcommand{\Ga}{\ensuremath{\Gamma}}
+\newcommand{\D}{\ensuremath{\Delta}}
+\newcommand{\Dp}{\ensuremath{\D'}}
+\newcommand{\T}{\ensuremath{T}}
+\newcommand{\TQ}{\ensuremath{{M}}}     % {\ensuremath{{\tt{T}}}}
+\newcommand{\TG}{\ensuremath{{\tau}}}   %{\ensuremath{{\mathsf{T}}}}
+\newcommand{\TGP}{\ensuremath{{\mathfrak{T}}}}
+\newcommand{\Tp}{\ensuremath{T'}}
+\newcommand{\ST}{\ensuremath{S}}
+\newcommand{\TT}{\atw{\T}}
+\newcommand{\SST}{\atw{S}}
+\newcommand{\UT}{\ensuremath{U}}
+\newcommand{\oT}[2]{\ensuremath{{!}\langle #2,#1\rangle}}
+%\newcommand{\sTm}{\ensuremath{\not\;!}}
+\newcommand{\sTm}{\ensuremath{!}}
+\newcommand{\oTm}[2]{\ensuremath{\;\sTm\langle #2,#1\rangle}}
+\newcommand{\iT}[2]{\ensuremath{?( #2,#1 )}}
+\newcommand{\iTs}[2]{\ensuremath{\&( #2,#1 )}}
+\newcommand{\oTG}[2]{\ensuremath{\;\natural\langle #2,#1\rangle}}
+\newcommand{\oTGp}[2]{\ensuremath{\;\natural'\langle #2,#1\rangle}}
+%\newcommand{\an}[1]{\ensuremath{\langle #1\rangle}}
+\newcommand{\an}[1]{\ensuremath{ #1}}
+\newcommand{\de}[3]{\ensuremath{#1\vdash#2:#3}}
+\newcommand{\der}[3]{\ensuremath{#1\vdash#2\triangleright#3}}
+\newcommand{\derl}[3]{\ensuremath{#1\vdash^\leq#2\triangleright#3}}
+\newcommand{\dom}[1]{\ensuremath{dom( #1)}}
+\newcommand{\range}[1]{\ensuremath{range( #1)}}
+\newcommand{\ty}{\textbf{t}}
+\newcommand{\End}{\kf{end}}
+\newcommand{\Bool}{\kf{bool}}
+\newcommand{\Nat}{\kf{nat}}
+%\newcommand{\setk}[1]{\ensuremath{\set{#1_k}_{k\in K}}}
+
+\newcommand{\SelType}[2]{\ensuremath{\oplus(#1,#2)}}
+
+\newcommand{\seltype}{\ensuremath{\oplus \langle \p,\{l_i:\T_i\}_{i\in
+I} \rangle }}   %--M
+\newcommand{\seltypeP}[1]{\ensuremath{\oplus \langle #1,\{l_i:\T_i\}_{i\in
+I} \rangle }}   %--M
+\newcommand{\seltypeCl}{\ensuremath{\oplus \langle \pset,\{l_i:\cloT_i\}_{i\in
+I} \rangle }}
+\newcommand{\seltypeph}{\ensuremath{\oplus \langle \pset,\{l_i:\hat\T_i\}_{i\in
+I} \rangle }}
+\newcommand{\seltypeC}{\ensuremath{\oplus \langle \pset,\{l:\calT,l_i:\T_i\}_{i\in
+I} \rangle }}
+\newcommand{\seltypeG}{\ensuremath{\oplus(\p,\{l_i:\pro{\G_i}\q\}_{i\in I})}}
+\newcommand{\seltypeT}{\ensuremath{\oplus\{l_i:\pro{\T_i}\q\}_{i\in I}}}
+\newcommand{\seltypeTprf}{\ensuremath{\oplus\{l_i:\TGP_i\}_{i\in I}}}
+\newcommand{\seltypeTp}{\ensuremath{\oplus\{l_i:\T_i\}_{i\in I}}}
+\newcommand{\seltypeq}{\ensuremath{\oplus\langle\pset,l\rangle;\T}}
+\newcommand{\seltypeqg}{\ensuremath{\oplus\langle\pset,l\rangle;\TG}}
+\newcommand{\seltypeqj}{\ensuremath{\oplus\langle\{j\},l\rangle;\T}}
+\newcommand{\seltypeqq}{\ensuremath{\oplus\langle\q,l\rangle;\T}}
+\newcommand{\seltypeqqG}{\ensuremath{\oplus\langle\q,l\rangle;\TG}}
+\newcommand{\seltypep}{\ensuremath{\oplus(\pset,l);\T'}}
+\newcommand{\seltypezp}{\ensuremath{\oplus(\pset,l:\T_0;\T')}}
+\newcommand{\seltypez}{\ensuremath{\oplus(\pset,l:\T_0)}}
+\newcommand{\seltypei}{\ensuremath{\oplus\langle\pset,l_i\rangle;\T_i}}
+\newcommand{\seltypej}{\ensuremath{\oplus(\p,l_j);\T_j}}    %--M
+\newcommand{\seltypesi}{\ensuremath{\oplus(\p,l_{i})}}    %--M
+\newcommand{\seltypesip}{\ensuremath{\oplus(\pset,l_{i'})}}
+\newcommand{\seltypesipz}{\ensuremath{\oplus(\pset,l_{i_0})}}
+\newcommand{\seltypesipzs}{\ensuremath{\oplus(\set\p,l_{i_0})}}
+\newcommand{\seltypesipzsj}{\ensuremath{\oplus\langle\p,l_j\rangle}}
+\newcommand{\seltypesipjz}{\ensuremath{\oplus(\pset\setminus \p,l_{i_0})}}
+\newcommand{\seltypesipj}{\ensuremath{\oplus(\pset\setminus \p,l_{i'})}}
+\newcommand{\seltypes}{\ensuremath{\oplus\langle\p,l\rangle}}  %--M
+\newcommand{\seltypesq}{\ensuremath{\oplus\langle\q,l\rangle}}  %--M
+\newcommand{\seltypesj}{\ensuremath{\oplus\langle\pset,l_j\rangle}}
+\newcommand{\seltypesem}{\ensuremath{\oplus(\emptyset,l)}}
+\newcommand{\seltypesemZ}{\ensuremath{\oplus(\emptyset,Z)}}
+\newcommand{\branchtype}{\ensuremath{\&(\p,\{l_i:\T_i\}_{i\in I})}}
+\newcommand{\branchtypeCl}{\ensuremath{\&(\p,\{l_i:\cloT_i\}_{i\in I})}}
+\newcommand{\branchtypeqq}{\ensuremath{\&(\p,\{l_i:\T^{(\q)}_i\}_{i\in I})}}
+\newcommand{\branchtypeqqh}{\ensuremath{\&(\p,\{l_i:\hat\T^{(\q)}_i\}_{i\in I})}}
+\newcommand{\branchtypeC}{\ensuremath{\&(\p,\{l:\calT,l_i:\T_i\}_{i\in I})}}
+\newcommand{\branchtypeq}{\ensuremath{\&(\q,\{l_i:\T_i\}_{i\in I})}}
+\newcommand{\branchtypeG}{\ensuremath{\&(\p,\{l_i:\pro{\G_i}\q\}_{i\in I})}}
+\newcommand{\branchtypeT}{\ensuremath{\&\{l_i:\pro{\T_i}\q\}_{i\in I}}}
+\newcommand{\branchtypeTp}{\ensuremath{\&\{l_i:\T'_i\}_{i\in I}}}
+\newcommand{\branchtypeTprf}{\ensuremath{\&\{l_i:\TGP'_i\}_{i\in I}}}
+\newcommand{\branchtypes}{\ensuremath{\&\{l_i:\T_i\}_{i\in I}}}
+\newcommand{\branchtypepf}{\ensuremath{\&\{l_i:\TGP_i\}_{i\in I}}}
+\newcommand{\branchtypesG}{\ensuremath{\&\{l_i:\TG_i\}_{i\in I}}}
+
+\newcommand{\Xtype}{\ensuremath{\X : \SST\;\TT}}
+\newcommand{\XtypeP}{\ensuremath{\X : \SST\;\ty}}
+\newcommand{\XtypeQ}{\ensuremath{\X : \SST\;\mu\ty.\TT}}
+
+\newcommand{\trule}[1]{\ensuremath{(\text{\sc{#1}})}}
+\newcommand{\ins}{\ensuremath{:}}
+\newcommand{\equivT}[2]{\ensuremath{#1\approx #2}}
+% TIPI CODA
+\newcommand{\derqq}[4]{\ensuremath{#1 \vdash_{#2} #3 \triangleright #4}}
+\newcommand{\derq}[3]{\ensuremath{#1 \vdash_{\set\s} #2 \triangleright #3}}
+\newcommand{\ms}[2]{\ensuremath{{#1}\setminus{#2}}}
+\newcommand{\coe}[2]{\ensuremath{\mathsf{co}({#1},{#2})}}
+\newcommand{\Ltypes}{\mathcal{L}_{\T}}
+\newcommand{\Qtypes}{\mathcal{Q}_{\T}}
+\newcommand{\Dcomp}{\ensuremath{\ast}}
+\newcommand{\Tcomp}{\ensuremath{;}}
+\newcommand{\dual}[2]{\ensuremath{{#1}\bowtie{#2}}}
+\newcommand{\dualIO}[2]{\ensuremath{{#1}~\mf{\stackrel{-}{\Bowtie}}~{#2}}}
+%INVERSIONE
+\newcommand{\ifthen}[2]{If {#1}, then {#2}.}
+\newcommand{\cleq}{\ensuremath{\sqsubseteq}}
+\newcommand{\sered}[2]{\ensuremath{{#1}~\Rightarrow~{#2}}}
+\newcommand{\seredstar}[2]{\ensuremath{{#1}~\Rightarrow^*~{#2}}}
+%PROGRESSO
+
+\newcommand{\cu}{\ensuremath{\lambda}}
+\newcommand{\cuu}{\ensuremath{\lambda'}}
+\newcommand{\B}{\ensuremath{\mathcal{B}}}
+\newcommand{\M}{\ensuremath{\mathcal{N}}}
+\newcommand{\n}{n}
+\newcommand{\Or}{\ensuremath{\mathcal{R}}}
+\newcommand{\Se}{\ensuremath{\mathcal{S}}}
+\newcommand{\V}{\ensuremath{\mathcal{V}}}
+\newcommand{\Th}{\ensuremath{\Theta}}
+\newcommand{\semicolumn}{\textup{\texttt{;}}}
+\newcommand{\dere}[2]{\ensuremath{\Th\,;\Or;\,\M\,;\,\B\vdash #1\; \blacktriangleright\; #2}}
+\newcommand{\dereprime}[1]{\ensuremath{\Th\,\vdash #1\; \blacktriangleright\;
+\Or' \,;\,\M'\,;\,\B'}}
+\newcommand{\dereb}[3]{\ensuremath{\Th\,\vdash #1 \;\blacktriangleright\; #2 \,;\,\M\,;\,#3}}
+\newcommand{\derep}[4]{\ensuremath{#1\,\vdash #2 \;\blacktriangleright\; #3 \,;\;#4\,;\;\B}}
+\newcommand{\derepb}[5]{\ensuremath{#1\,\vdash #2 \;\blacktriangleright\; #3 \,;\;#4\,;\;#5}}
+\newcommand{\deri}[5]{\ensuremath{#1\,\Mapsto #2 \;;\; #3 \,;\;#4\,;\;#5}}
+\newcommand{\sdeletecha}[2]{{#1}\setminus{#2}}
+\newcommand{\co}[2]{\ensuremath{{#1}\prec{#2}}}
+\newcommand{\pre}[2]{\ensuremath{\mathsf{pre}({#1},{#2})}}
+\newcommand{\deletecha}[2]{{#1}\setminus\!\!\!\setminus {#2}}
+\newcommand{\edeletecha}[2]{{#1}\fatbslash {#2}}
+\newcommand{\cl}[1]{\ensuremath{({#1})^+}}
+\newcommand{\derf}[3]{\ensuremath{#1\,\semicolumn\,\B\vdash#2\blacktriangleright#3}}
+\newcommand{\derg}[2]{\ensuremath{#1\blacktriangleright#2}}
+\newcommand{\derfgh}[2]{\ensuremath{#1\,\Mapsto#2}}
+\newcommand{\sn}[1]{\ensuremath{{\sf{cf}}(#1)}}
+
+\newcommand{\dera}[3]{\ensuremath{#1\,\semicolumn\,\sdeletecha\B\Ia\vdash#2\blacktriangleright#3}}
+\newcommand{\deraa}[2]{\ensuremath{\Th\,\semicolumn\,\B,\Ia~\vdash#1\blacktriangleright#2}}
+
+\newcommand{\derab}[2]{\ensuremath{\Th~\sharp~\B,\Ib~\natural~\Se'\vdash#1\blacktriangleright#2}}
+\newcommand{\nk}[1]{\ensuremath{\curlywedge(#1)}}
+\newcommand{\gen}[2]{\ensuremath{  #1 \propto #2 }}
+
+\newcommand{\prule}[1]{\{\text{\textup{\sc{#1}}}\}}
+
+\newcommand{\cadd}{\ensuremath{\cdot}}
+\newcommand{\leqor}{\ensuremath{\preceq}}
+\newcommand{\ready}{ready}
+\newcommand{\nind}{\indent\indent\indent}
+\newcommand{\E}{\ensuremath{\mathcal{E}}}
+\newcommand{\C}{\ensuremath{\mathcal{C}}}
+\newcommand{\cq}{channel qualifier}
+\newcommand{\cqs}{\ensuremath{\zeta}}
+%\newcommand{\Uc}{\ensuremath{\uplus}}
+\newcommand{\Uc}{\ensuremath{\cup}}
+
+%SIMPLE
+\newcommand{\outS}[3]{\ensuremath{#1!\langle #2\rangle.#3}}
+\newcommand{\inpS}[3]{\ensuremath{#1?( #2).#3}}
+\newcommand{\sdS}[3]{\ensuremath{#1!\langle\! \langle#2\rangle \!\rangle.#3}}
+\newcommand{\rdS}[3]{\ensuremath{#1?(\!(#2)\!).#3}}
+\newcommand{\lselS}[3]{\ensuremath{#1 \oplus {#2}.#3}}
+\newcommand{\lbranchS}[1]{\ensuremath{#1 \& \indexed{l}{\PP}{i}{I}}}
+\newcommand{\tos}[1]{\ensuremath{\circledS(#1)}}
+\newcommand{\toss}{\ensuremath{\circledS}}
+\newcommand{\tsn}[3]{\ensuremath{\lfloor#1~\ddagger~ #2\rfloor(#3)}}
+\newcommand{\tsnd}[2]{\ensuremath{\lfloor#1~\ddagger~ #2\rfloor}}
+\newcommand{\lbrancht}[2]{\ensuremath{#1 \&
+(#2, \set{l_i:\tsn\T\y{\PP_i}}_{i\in I})}}
+\newcommand{\lbranchti}[2]{\ensuremath{#1 \&(#2, \set{l_i:\tsn{\T_i}\y{\PP_i}}_{i\in I})}}
+\newcommand{\lbranchtiX}[1]{\ensuremath{\&(#1, \set{l_i:\tsnX{\T_i}\y{\PP_i}}_{i\in I})}}
+\newcommand{\pref}{{\sf{pref}}}
+\newcommand{\tsnn}[3]{\ensuremath{\lfloor\!\lfloor#1~\ddagger~ #2\rfloor\!\rfloor(#3)}}
+\newcommand{\seltypess}{\ensuremath{\oplus\langle\pset,\{l_i:\T_i\}_{i\in I}\rangle}}
+\newcommand{\lsels}[4]{\ensuremath{#1 \oplus \anglep{#2}{#3}.#4}}
+\newcommand{\tons}{\ensuremath{\circledR}}
+\newcommand{\ton}[1]{\ensuremath{\circledR(#1)}}
+\newcommand{\tsnX}[3]{\ensuremath{\lfloor#1~\natural~ #2~\natural~ \X\rfloor(#3)}}
+\newcommand{\tsnXd}[2]{\ensuremath{\lfloor#1~\natural~ #2~\natural~ \X\rfloor}}
+\newcommand{\tsnY}[3]{\ensuremath{\lfloor#1~\natural~ #2~\natural~ Y\rfloor(#3)}}
+\newcommand{\gsn}[3]{\ensuremath{\lfloor#1~\dagger~ #2\rfloor(#3)}}
+\newcommand{\gsns}[2]{\ensuremath{\lfloor#1~\dagger~ #2\rfloor}}
+\newcommand{\tsns}[2]{\ensuremath{\lfloor#1~\ddagger~ #2\rfloor}}
+\newcommand{\gsni}[4]{\ensuremath{\lfloor#1~\dagger~ #2\rfloor_{#3}(#4)}}
+
+\newcommand{\tl}{\ensuremath{\blacktriangleright}}
+\newcommand{\varass}[1]{\X[#1]\, \tl \,\Des}
+\newcommand{\varassp}[1]{\X[#1]\, \tl \,\Des'}
+\newcommand{\varasspp}[1]{\X[#1]\, \tl \,\Des'}
+\newcommand{\varasspm}[1]{\X[#1]\, \tl \,\mn{\Des}\y}
+
+\newcommand{\rt}{\ensuremath{r}}
+
+\newcommand{\f}{\ensuremath{f}}
+
+\newcommand{\init}{initiation}
+\newcommand{\adde}[2]{\ensuremath{#1\bar{\cup}\set{#2}}}
+\newcommand{\as}[1]{\ensuremath{#1^\star}}
+\newcommand{\orl}{\ensuremath{~\vee~}}
+\newcommand{\andl}{\ensuremath{~\wedge~}}
+\newcommand{\st}[1]{\ensuremath{\varoast(#1)}}
+\newcommand{\nt}[1]{\ensuremath{\varodot(#1)}}
+\newcommand{\sm}[2]{\ensuremath{#1-#2}}
+\newcommand{\ns}[2]{\ensuremath{\boxast(#1,#2)}}
+\newcommand{\rmb}[3]{\ensuremath{\langle#1;#2;#3\rangle}}
+\newcommand{\com}[2]{\ensuremath{#1\asymp#2}}
+\newcommand{\stn}[1]{\ensuremath{\not\!\!\varoast(#1)}}
+\newcommand{\Un}[2]{\ensuremath{#1\bigoplus#2}}
+\newcommand{\Ur}[4]{\ensuremath{\boxtimes(#1,#2,#3,#4)}}
+\newcommand{\Um}[4]{\ensuremath{\boxdot(#1,#2,#3,#4)}}
+\newcommand{\Ub}[4]{\ensuremath{\boxplus(#1,#2,#3,#4)}}
+
+
+\newcommand{\N}{\M}
+\newcommand{\Ni}{{\sf{N}}}      %{\mathtt{\M}}
+\newcommand{\Nip}{\dom{\calC}}
+\newcommand{\Bi}{\ensuremath{{\sf{B}}}}
+\newcommand{\Bip}{\Bi}
+\newcommand{\down}[2]{#1 \downarrow #2}
+\newcommand{\bari}{{\bar{i}}}
+\newcommand{\up}[2]{#1 \uparrow #2}
+\newcommand{\upp}[2]{#1 \uparrow^{\!+}\! #2}
+\newcommand{\downp}[2]{#1 \downarrow^{\!+}\! #2}
+\newcommand{\updown}[2]{#1 \updownarrow #2}
+\renewcommand{\deri}[5]{\ensuremath{\Th\;;#1\,\Mapsto \;#2 \;;\; #3
+\,;\;#4\,;\;#5}}
+\newcommand{\derid}[6]{\ensuremath{#1\;\;;\;\;#2\,\Mapsto \;#3 \;;\; #4
+\,;\;#5\,;\;#6}}
+\newcommand{\varassi}[1]{\X[#1]\, \tl \,\Des}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calS}{\down{\Ori}{y}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\sfA}{\mathsf{A}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calC}{\mathsf{C}}
+\newcommand{\calCs}[1]{\mapCs{#1}}
+\newcommand{\calCp}[1]{\mapCp{#1}}
+\newcommand{\mapC}{{\mathsf{C}}}
+\newcommand{\mapCs}[1]{{\sf cl}(\mapC,#1)}
+\newcommand{\mapCp}[1]{{\sf cl}(\mapC,#1)}
+\newcommand{\mapCsi}[2]{{\sf cl}(#1,#2)}
+\newcommand{\mapCpi}[2]{{\sf cl}(#1,#2)}
+\newcommand{\mapCup}[2]{{\sf cl}^\Uparrow(#1,#2)}
+\newcommand{\supp}{supp}
+\newcommand{\Orm}{\Ori^-}
+\newcommand{\snam}{\mathcal{S}}
+\newcommand{\ddeletecha}[2]{#1 \searrow #2}
+\newcommand{\notyet}[1]{{\color{lightgray}{{#1}}}}
+\renewcommand{\bar}[1]{\overline{\,#1\,}}
+\newcommand{\Ori}{{{\sf{R}}}}
+\newcommand{\Di}{{\textsf{D}}}
+\newcommand{\Ki}{{\textsf{K}}}
+%{{\ensuremath{\mathcal{R}^I}}}
+\newcommand{\sss}[1]{}
+\newcommand{\ac}[1]{\bar#1}
+\newcommand{\mca}{\ensuremath{f}}
+\newcommand{\gt}{\ensuremath{g}}
+
+\newcommand{\fin}{\ensuremath{\textit{fin}}}
+\newcommand{\tofin}{\ensuremath{\to_{\fin}}}
+\newcommand{\Condition}[1]{\mathit{h}(#1)}
+
+%2011
+\newcommand{\GG}{\ensuremath{\mathcal{G}}}
+\newcommand{\MM}{\ensuremath{\mathcal{M}}}
+\newcommand{\PC}{\ensuremath{\mathcal{P}}}
+
+%progress proof
+
+\newcommand{\aG}{\hat{G}}
+\newcommand{\gG}{\overrightarrow{G}}
+\newcommand{\muk}[3]{\mu^{#1}{#2}.{#3}}
+\newcommand{\aT}{\hat{T}}
+\newcommand{\aPP}{\PP}   %{\hat{\PP}}
+\newcommand{\mPP}{\ensuremath{\mathsf{\PP}}}
+\newcommand{\mR}{\ensuremath{\mathsf{\R}}}
+\newcommand{\gmPP}{\overrightarrow{\mPP}}
+\newcommand{\aaPP}{\hat{\mPP}}
+\newcommand{\erase}[1]{\ensuremath{|{#1}|}}
+\newcommand{\aGa}{\hat{\Ga}}
+\newcommand{\gGa}{\overrightarrow{\Ga}}
+\newcommand{\aD}{\hat{\D}}
+\newcommand{\apredsym}[1]{\ensuremath{\stackrel{#1}{\longrightarrow}}}
+%\newcommand{\mapredsym}[1]{\ensuremath{\stackrel{#1~~}{\longrightarrow^*}}}%ORRIBILE
+\newcommand{\mapredsym}[1]{\ensuremath{\stackrel{~~~#1~~~_*}{\longrightarrow}}}
+\newcommand{\apred}[2]{\ensuremath{#1\apredsym{\Ga}#2}}
+\newcommand{\gapred}[2]{\ensuremath{#1\apredsym{\Ga}#2}}
+\newcommand{\apredp}[2]{\ensuremath{#1\apredsym{\Ga,\Ia:\G}#2}}
+\newcommand{\apredpv}[2]{\ensuremath{#1\apredsym{\Ga,\overrightarrow{\Ia:\G}}#2}}
+\newcommand{\ap}{\sqsubset}
+\newcommand{\grel}{\cong}
+\newcommand{\sai}[4]{\overrightarrow{#1}[#2](#3).{#4}}
+\newcommand{\aQ}{\hat{\mathsf{Q}}}
+\newcommand{\aS}{\hat{\mathsf{S}}}
+\newcommand{\m}[4]{\ensuremath{#1{\dashrightarrow}#2:\langle#3\rangle.#4}}
+\newcommand{\g}[2]{\ensuremath{\gamma(#1,#2)}}
+\newcommand{\gl}[3]{\ensuremath{\delta(#1,#2,#3)}}
+\newcommand{\cn}[2]{\ensuremath{\#(#1,#2)}}
+\newcommand{\calD}{\ensuremath{\mathcal{V}}}
+\newcommand{\w}[3]{\ensuremath{\omega(#1,#2,#3,\CS)}}
+\newcommand{\ws}[4]{\ensuremath{\omega(#1,#2,#3,#4)}}
+\newcommand{\wsp}[3]{\ensuremath{\omega(#1,#2,#3,\CS'\cup\set{\s:\g\cloG\p})}}
+\newcommand{\wspl}[3]{\ensuremath{\omega(#1,#2,#3,\CS'\cup\set{\s:\gl\cloG\p l})}}
+\newcommand{\tr}[3]{\ensuremath{\langle#1,#2,#3\rangle}}
+\newcommand{\sut}[2]{\ensuremath{#1\preceq#2}}
+\newcommand{\ext}[1]{\ensuremath{\eta(#1)}}
+\newcommand{\app}[1]{\ensuremath{\alpha(#1)}}
+\newcommand{\appb}[1]{\ensuremath{\beta(#1)}}
+\newcommand{\appr}[2]{\ensuremath{#1\sqsubseteq#2}}
+\newcommand{\csr}{csd}
+\newcommand{\srel}{\co{}{}}
+\newcommand{\policy}{condition}
+\newcommand{\ww}[2]{\ensuremath{\mho(#1,#2)}}
+\newcommand{\dr}[2]{\ensuremath{\langle#1,#2\rangle}}
+\newcommand{\CS}{\ensuremath{\mathds{G}}}
+\newcommand{\sns}[1]{\ensuremath{\sigma(#1)}}
+\newcommand{\qb}[2]{\ensuremath{\rho(#1,\Ga,#2,\mathcal A)}}
+\newcommand{\calCC}{\ensuremath{\mathcal C}}
+\newcommand{\calT}{\ensuremath{\mathcal T}}
+\newcommand{\napredsym}[2]{\ensuremath{\stackrel{~~~#1~~~_{#2}}{\longrightarrow}}}%ORRIBILE
+\newcommand{\mn}[2]{#1\ssearrow #2}
+\newcommand{\TP}{\ensuremath{\mathds{T}}} %{\ensuremath{\Re}}
+\newcommand{\deren}[5]{\ensuremath{\Th; #3 ;#4;#5\vdash #1 \;\blacktriangleright\; #2}}
+\newcommand{\Des}{\ensuremath{\mathcal{D}}}
+\newcommand{\fc}[1]{\ensuremath{{\sf fc}(#1)}}
+\newcommand{\derenV}[6]{\ensuremath{#1 ; #4 ;#5;#6\vdash #2 \;\blacktriangleright\; #3}}
+\newcommand{\derenVn}[6]{\ensuremath{#1 ; #4 ;#5;#6\not\vdash #2 \;\blacktriangleright\; #3}}
+
+\newcommand{\cloT}{\ensuremath{\mathsf{\T}}}
+\newcommand{\cloG}{\ensuremath{\mathsf{\G}}}
